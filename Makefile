@@ -21,6 +21,7 @@ help:
 	@echo "  validate                   run tests and quality checks"
 	@echo "  start-devstack             run a local development copy of the server"
 	@echo "  open-devstack              open a shell on the server started by start-devstack"
+	@echo "  pkg-devstack               build the course-discovery image from the latest configuration and code"
 	@echo ""
 
 clean:
@@ -73,3 +74,6 @@ start-devstack:
 
 open-devstack:
 	docker exec -it course-discovery /edx/app/course_discovery/devstack.sh open
+
+pkg-devstack:
+	docker build -t course-discovery:latest -f docker/build/course_discovery/Dockerfile git://github.com/edx/configuration
